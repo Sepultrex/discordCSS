@@ -1,70 +1,150 @@
-/*                                                                                                   
-                            ██████                                   ███████                         
-                           █████████                                ██████████                        
-                         █████████████                           ███████████████                      
-                         ██████████████                         █████████████████                     
-                       █████████████████                        ██████████████████                    
-                     █████████████████████                   ██████████████████████                   
-                   ████████████████████████                 █████████████████████████                 
-                  ██████████████████████████                █████████████████████████                 
-                  ██████████████████████████                 ██████████████████████                   
-                  █████████████████████████                    ████████████████████                   
-                     ███████████████                             █████████████████                    
+/* import theme modules */
+@import url('https://refact0r.github.io/system24/build/system24.css');
 
-                         ██████████████████                 ██████████████████                        
-                     ██████████████████████████          ██████████████████████████                   
-                   ██████████████     ████████████████████████████      █████████████                 
-                  █████████                ██████████████████               █████████                 
-                   ███████                  ████████████████                 ████████                 
-                     █████         ███      ██████   ██████      ████        █████                    
-                     █████        █████     ██████   ██████      █████        ████                    
-                     █████        █████     ██████   ██████      █████       █████                    
-                      █████                 ████       █████                 █████                    
-                      █████                █████       █████                █████                     
-                       ██████             ██████        █████             ███████                     
-                         ██████████ ██████████ █████████ ███████████ █████████                        
-                          ██████████████████  ███████████  ██████████████████                         
-                   █████████████████████    ███████████████     █████████   █████████                 
-                   ███████████████          ███████████████           ███████████████                 
-                     ██████████████         ███████████████          █████████████                    
-                          ████████            █████████████          ███████                          
-                         ████████              ██████████             ███████                         
-                      █████████                  ██████                 █████████                     
-                     ████████                                               ██████                    
-                     ██████                                                  ██████               */
+body {
+    /* font, change to '' for default discord font */
+    --font: 'DM Mono'; /* change to '' for default discord font */
+    --code-font: 'DM Mono'; /* change to '' for default discord font */
+    font-weight: 300 /* normal text font weight. DOES NOT AFFECT BOLD TEXT */;
 
+    /* sizes */
+    --gap: 9px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
 
-/* font */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/*ctrl+k */
-@import url("https://dablulite.github.io/css-snippets/QuickSwitchV2/import.css");
+    /* animation/transition options */
+    --animations: off; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
 
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: on; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: hide; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg'); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: image; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url('https://raw.githubusercontent.com/Sepultrex/discordCSS/refs/heads/main/img/ryo-guita50.gif'); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* other options */
+    --small-user-panel: off; /* off: default user panel, on: smaller user panel like in old discord */
+
+    /* unrounding options */
+    --unrounding: on; /* off: default, on: remove rounded corners from panels */
+
+    /* styling options */
+    --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
+    --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
+    --ascii-loader: system24; /* off: default, system24: use system24 ascii loader, cats: use cats loader */
+
+    /* panel labels */
+    --panel-labels: off; /* off: default, on: add labels to panels */
+    --label-color: var(--text-muted); /* color of labels */
+    --label-font-weight: 500; /* font weight of labels */
+}
+
+/* color options */
 :root {
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
 
-    /* font, change to 'gg sans' for default discord font */
-    --font: 'figtree';
+    /* text colors */
+    --text-0: var(--bg-3); /* text on colored elements */
+    --text-1: hsl(245deg, 50%, 95%); /* other normally white text */
+    --text-2: hsl(245deg, 50%, 91%); /* headings and important text */
+    --text-3: hsl(246deg, 30%, 80%); /* normal text */
+    --text-4: hsl(248deg, 15%, 61%); /* icon buttons and channels */
+    --text-5: hsl(249deg, 12%, 47%); /* muted channels/chats and timestamps */
 
-    /* color of links  */
-    --accent-1: hsl(221, 80%, 60%);
-    /* color of unread dividers and some indicators  */
-    --accent-2: hsl(221, 80%, 58%);
-    /* color of accented buttons  */
-    --accent-3: hsl(221, 80%, 56%);
-    /* color of accented buttons when hovered  */
-    --accent-4: hsl(221, 80%, 54%);
-    /* color of accented buttons when clicked  */
-    --accent-5: hsl(221, 80%, 52%);
-    /* color of mentions and messages that mention you  */
-    --mention: hsla(221, 80%, 50%, 0.09);
-    /* color of mentions and messages that mention you when hovered  */
-    --mention-hover: hsla(221, 80%, 48%, 0.05);
+    /* background and dark colors */
+    --bg-1: hsl(248deg, 25%, 24%); /* dark buttons when clicked */
+    --bg-2: hsl(248deg, 25%, 18%); /* dark buttons */
+    --bg-3: hsl(247deg, 23%, 15%); /* spacing, secondary elements */
+    --bg-4: hsl(249deg, 22%, 12%); /* main background color */
+    --hover: hsla(250, 20%, 40%, 0.1); /* channels and buttons when hovered */
+    --active: hsla(250, 20%, 40%, 0.2); /* channels and buttons when clicked or selected */
+    --active-2: hsla(250, 20%, 40%, 0.3); /* extra state for transparent buttons */
+    --message-hover: hsla(250, 0%, 0%, 0.1); /* messages when hovered */
 
-    --brand-experiment: hsl(221, 80%, 28%);
-    --status-danger: var(--accent-2);
+    /* accent colors */
+    --accent-1: hsl(2, 65%, 88%); /* links and other accent text */
+    --accent-2: #ebbcba; /* small accent elements */
+    --accent-3: #ebbcba; /* accent buttons */
+    --accent-4: hsl(2, 55%, 78%); /* accent buttons when hovered */
+    --accent-5: hsl(2, 55%, 73%); /* accent buttons when clicked */
+    --accent-new: var(--red-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
 
-    /* font family  */
-    --font-primary: var(--font), 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-display: var(--font), 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #43a25a for default */
+    --dnd: var(--red-2); /* change to #d83a42 for default */
+    --idle: var(--yellow-2); /* change to #ca9654 for default */
+    --streaming: var(--purple-2); /* change to #593695 for default */
+    --offline: var(--text-4); /* change to #83838b for default offline color */
+
+    /* border colors */
+    --border-light: var(--hover); /* general light border color */
+    --border: var(--active); /* general normal border color */
+    --border-hover: var(--accent-2); /* border color of panels when hovered */
+    --button-border: hsl(250, 0%, 100%, 0.1); /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: hsl(343, 76%, 73%);
+    --red-2: #eb6f92;
+    --red-3: #eb6f92;
+    --red-4: hsl(343, 76%, 63%);
+    --red-5: hsl(343, 76%, 58%);
+
+    --green-1: hsl(197, 49%, 43%);
+    --green-2: #31748f;
+    --green-3: #31748f;
+    --green-4: hsl(197, 49%, 34%);
+    --green-5: hsl(197, 49%, 30%);
+
+    --blue-1: hsl(189, 48%, 78%);
+    --blue-2: #9ccfd8;
+    --blue-3: #9ccfd8;
+    --blue-4: hsl(189, 43%, 68%);
+    --blue-5: hsl(189, 43%, 63%);
+
+    --yellow-1: hsl(35, 88%, 77%);
+    --yellow-2: #f6c177;
+    --yellow-3: #f6c177;
+    --yellow-4: hsl(35, 88%, 67%);
+    --yellow-5: hsl(35, 88%, 62%);
+
+    --purple-1: hsl(267, 57%, 83%);
+    --purple-2: #c4a7e7;
+    --purple-3: #c4a7e7;
+    --purple-4: hsl(267, 57%, 73%);
+    --purple-5: hsl(267, 57%, 68%);
 }
 
 /* hide useless things */
@@ -90,6 +170,8 @@
 /* ignore */#user-context-ignore,
 /* mention */#user-context-mention,
 /* view verification code */#user-context-secure-frames-user-verification,
+#user-context-call,
+/*set dm background*/ #user-context-set-wallpaper,
 /* ▶▶ chat right click menu (message) ◀◀ */
 /* reaction bar */.wrapper_f563df,
 /* add reaction */#message-add-reaction,
@@ -108,53 +190,9 @@
     display: none;
 }
 
-/* ryo loader  */
-.container_a2f514.fixClipping_efbae7>.content_a2f514 {
-    position: relative;
-}
-
-.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514 {
-    display: none;
-}
-
-.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514+.text_a2f514 {
-    top: 50px;
-}
-
-.container_a2f514.fixClipping_efbae7>.content_a2f514::before {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    left: calc(50% - 100px);
-    width: 200px;
-    height: 200px;
-    background: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-loading.gif") center/80% no-repeat !important;
-    image-rendering: pixelated;
-}
-
-/* ryo yamada dm button background instead of wumpus */
-.childWrapper__6e9f8>svg:not(.favoriteIcon_c9fddf) {
-    display: none;
-}
-
-
-.childWrapper__6e9f8:has(> svg:not(.favoriteIcon_c9fddf)) {
-    background: url('https://cdn.discordapp.com/emojis/1085365741685047306.gif?size=128&quality=lossless');
-    background-color: transparent !important;
-    background-size: cover;
-}
-
 /* hide ❓ */
 a[href="https://support.discord.com"] {
     display: none;
-}
-
-/*i'm new here, say hi!  */
-[class*=newMemberBadge]:before {
-    content: url(https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-hi.gif?size=64&quality=lossless);
-    transform: translate(-100%, -110%);
-    display: inline-block;
-    scale: 0.32;
 }
 
 /* ryo chase  */
@@ -174,34 +212,12 @@ div[data-dnd-name="hidefolder"] {
     display: none !important;
 }
 
-/* damn activites? dont care lol */
-.membersGroup_c8ffbb:has(>.headerContainer__095fe),
-.membersWrap_c8ffbb .openOnHover__0f2e8 {
-    display: none !important;
-}
-
 /* pin menu */
 [class^=searchResultsWrap_] [class^=container_]:has([class^=pageControlContainer_]) {
     position: sticky;
     bottom: 0px;
     z-index: 999;
     background: var(--bg-overlay-1, var(--background-secondary));
-}
-
-/* no more ads in voice channels  */
-.wrapper_e9b191 {
-    display: none;
-}
-
-[href="/store"],
-[aria-label*="Share Nitro with Friends"],
-[href="/shop"] {
-    display: none;
-}
-
-/* image hover  */
-[aria-label*="Edit Image with Apps"] {
-    display: none;
 }
 
 /* Text Bar  */
@@ -234,9 +250,6 @@ div[data-dnd-name="hidefolder"] {
     display: none;
 }
 
-[class^="userPopoutInner_"] [class^="blockquoteContainer_"] {
-    max-height: 90px;
-}
 
 /* Allow the server tooltip to fit the entire server name in one line */
 [class^=tooltip] {
@@ -244,196 +257,47 @@ div[data-dnd-name="hidefolder"] {
     /* allow it to be larger */
 }
 
+
 /* bot opaklık*/
 .member_c8ffbb.container__91a9d:has(.botTag__82f07) {
     opacity: 0.15;
 }
 
-/* OMG İ HATE BADGESSSSSS */
-div[class="container__8061a"] {
+/* ryo loader  */
+.container_a2f514.fixClipping_efbae7>.content_a2f514 {
+    position: relative;
+}
+
+.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514 {
     display: none;
 }
 
-/* COLOR ✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕  */
-
-/* durumdaki minik oyun müzik ikonu */
-svg.icon_c9d15c path {
-    fill: var(--accent-1) !important;
+.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514+.text_a2f514 {
+    top: 50px;
 }
 
-/* butonlar*/
-.iconContainer_c1e9c4 .checkbox_f525d3.checked_f525d3 {
-    background-color: var(--accent-1) !important;
+.container_a2f514.fixClipping_efbae7>.content_a2f514::before {
+    content: "";
+    position: absolute;
+    bottom: 50px;
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    background: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-loading.gif") center/80% no-repeat !important;
+    image-rendering: pixelated;
 }
 
-/* replace ping/strikethrough red  */
-.numberBadge__2b1f5,
-/* dm unread number  */
-.mention__3b95d {
-    background: var(--accent-2) !important;
+
+/* damn activites? dont care lol */
+.membersGroup_c8ffbb:has(>.headerContainer__095fe),
+.membersWrap_c8ffbb .openOnHover__0f2e8 {
+    display: none !important;
 }
 
-/* unread dividers  */
-.divider__908e2 {
-    --divider-color: var(--accent-2);
-}
-
-/* mute button strikethrough  */
-.icon__07f91 {
-    color: var(--accent-2) !important;
-}
-
-path[fill="var(--status-danger)"]
-
-/* vencord game activity strikethrough  */
-    {
-    fill: var(--accent-2) !important;
-}
-
-.theme-dark {
-    --blue-345: var(--accent-1);
-    /* links  */
-    --brand-260: var(--accent-2);
-    /* "NEW" channel list indicator  */
-    --brand-360: var(--accent-2);
-    /* bot labels, dm button, spotify progressbar  */
-    --brand-430: var(--accent-4);
-    /* send button hover  */
-    --brand-500: var(--accent-3);
-    /* buttons  */
-    --brand-560: var(--accent-4);
-    /* button hovered  */
-    --brand-600: var(--accent-5);
-    /* button pressed  */
-    --mention-background: var(--mention);
-    --mention-foreground: var(--accent-2);
-    --background-message-highlight: var(--mention);
-    --background-message-highlight-hover: var(--mention-hover);
-}
-
-/* mention */
-.wrapper_f61d60 {
-    background: var(--mention);
-}
-
-/* settings checkbuttons  */
-.container__87bf1.checked__87bf1 {
-    background: var(--accent-3) !important;
-}
-
-/* replace ping yellow  */
-.theme-dark {
-    --background-mentioned: var(--mention);
-    --background-mentioned-hover: var(--mention-hover);
-}
-
-/* mention message left edge  */
-.mentioned__5126c:before {
-    background: var(--accent-3) !important;
-}
-
-/* replace green  */
-.theme-dark {
-    --green-360: var(--accent-2);
-    /* replace other green stuff  */
-    --green-430: var(--accent-3);
-    /* green buttons (like invite)  */
-    --green-500: var(--accent-4);
-    /* green button hover  */
-    --green-530: var(--accent-5);
-    /* green button click  */
-    --text-positive: var(--accent-1);
-}
-
-/* context menu hover color  */
-.colorDefault_c1e9c4.focused_c1e9c4 {
-    background-color: var(--accent-5);
-}
-
-/* Add danger colours to dangerous user actions  */
-#user-context-close-dm,
-#user-context-remove-friend,
-#user-context-block {
-    color: var(--accent-2);
-}
-
-#user-context-close-dm:active,
-#user-context-remove-friend:active,
-#user-context-block:active {
-    background-color: var(--accent-5) !important;
-    color: var(--white-500) !important;
-}
-
-#user-context-close-dm[class*="focused_"],
-#user-context-remove-friend[class*="focused_"],
-#user-context-block[class*="focused_"] {
-    background-color: var(--accent-5);
-    color: var(--white-500);
-}
-
-/* microphone not working warning  */
-.notice__6e2b9 {
-    background-color: var(--mention-hover);
-}
-
-/* automod  */
-.automodMessage__5126c {
-    background-color: var(--accent-2);
-}
-
-.shieldIcon_b7ab2c {
-    color: var(--accent-2);
-}
-
-/* remove attachment button  */
-.removeMosaicItemHoverButton__6c706:hover {
-    background-color: var(--accent-1);
-}
-
-/* poll  */
-.votePercentageBar__4c520 {
-    background: var(--mention-hover);
-}
-
-/* server owner ico  */
-svg[aria-label="Server Owner"] {
-    color: var(--accent-1);
-}
-
-/*ping */
-.message__5126c.mentioned__5126c {
-    background-color: var(--mention);
-}
-
-.message__5126c.mentioned__5126c:hover {
-    background-color: var(--mention-hover) !important;
-}
-
-/* new message bar  */
-.newMessagesBar__0f481::before {
-    background: var(--accent-3);
-}
-
-/* voice connected  */
-.rtcConnectionStatusConnected__06d62 {
-    color: var(--accent-1) !important;
-}
-
-/*Bot tag */
-.botTagRegular__82f07 {
-    background-color: var(--accent-5);
-}
-
-/* spotify player*/
-#vc-spotify-player {
-    background-color: #0c0c0e !important;
-}
-
-.barFill_a562c8 {
-    background-color: var(--accent-1) !important;
-}
-
-.grabber_a562c8 {
-    margin-top: -5px !important;
-    margin-left: -5px !important;
+/*i'm new here, say hi!  */
+[class*=newMemberBadge]:before {
+    content: url(https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-hi.gif?size=64&quality=lossless);
+    transform: translate(-100%, -110%);
+    display: inline-block;
+    scale: 0.32;
 }
