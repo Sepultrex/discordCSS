@@ -44,23 +44,23 @@
     /* font, change to 'gg sans' for default discord font */
     --font: 'figtree';
 
-    --accent-0: hsl(263, 55%, 90%);
+    --accent-0: hsl(0, 55%, 90%);
     /* color of links  */
-    --accent-1: hsl(263, 55%, 60%);
+    --accent-1: hsl(0, 55%, 60%);
     /* color of unread dividers and some indicators  */
-    --accent-2: hsl(263, 55%, 58%);
+    --accent-2: hsl(0, 55%, 58%);
     /* color of accented buttons  */
-    --accent-3: hsl(263, 55%, 56%);
+    --accent-3: hsl(0, 55%, 56%);
     /* color of accented buttons when hovered  */
-    --accent-4: hsl(263, 55%, 54%);
+    --accent-4: hsl(0, 55%, 54%);
     /* color of accented buttons when clicked  */
-    --accent-5: hsl(263, 55%, 52%);
+    --accent-5: hsl(0, 55%, 52%);
     /* color of mentions and messages that mention you  */
-    --mention: hsla(263, 55%, 50%, 0.09);
+    --mention: hsla(0, 55%, 50%, 0.09);
     /* color of mentions and messages that mention you when hovered  */
-    --mention-hover: hsla(263, 55%, 48%, 0.05);
+    --mention-hover: hsla(0, 55%, 48%, 0.05);
 
-    --brand-experiment: hsl(263, 80%, 28%);
+    --brand-experiment: hsl(0, 80%, 28%);
     --status-danger: var(--accent-2);
 
     /* font family  */
@@ -446,4 +446,3 @@ svg[aria-label="Server Owner"] {
     margin-top: -5px !important;
     margin-left: -5px !important;
 }
-
