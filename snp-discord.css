@@ -33,45 +33,66 @@
                      ████████                                               ██████                    
                      ██████                                                  ██████               */
 
-
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/*ctrl+k */
-@import url("https://dablulite.github.io/css-snippets/QuickSwitchV2/import.css");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
+  /* font, change to 'gg sans' for default discord font */
+  --font: "figtree";
 
-    /* font, change to 'gg sans' for default discord font */
-    --font: 'figtree';
+  --theme-h: 0;
+  --theme-s: 0%;
+  --theme-l: 5%;
+  --primary-500-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) + 11.9%);
+  --primary-530-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) + 6.7%);
+  --primary-560-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) + 2.9%);
+  --primary-600-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) + 0%);
+  --primary-630-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 2.6%);
+  --primary-645-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 3.7%);
+  --primary-660-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 5.9%);
+  --primary-700-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 8.1%);
+  --primary-730-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 9.6%);
+  --primary-760-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 11.4%);
+  --primary-800-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 13.3%);
+  --primary-830-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 15.7%);
+  --primary-860-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 18.1%);
+  --primary-900-hsl: var(--theme-h) var(--theme-s) calc(var(--theme-l) - 19.8%);
 
-    --accent-0: hsl(0, 55%, 90%);
-    /* color of links  */
-    --accent-1: hsl(0, 55%, 60%);
-    /* color of unread dividers and some indicators  */
-    --accent-2: hsl(0, 55%, 58%);
-    /* color of accented buttons  */
-    --accent-3: hsl(0, 55%, 56%);
-    /* color of accented buttons when hovered  */
-    --accent-4: hsl(0, 55%, 54%);
-    /* color of accented buttons when clicked  */
-    --accent-5: hsl(0, 55%, 52%);
-    /* color of mentions and messages that mention you  */
-    --mention: hsla(0, 55%, 50%, 0.09);
-    /* color of mentions and messages that mention you when hovered  */
-    --mention-hover: hsla(0, 55%, 48%, 0.05);
+  /* color of links */
+  --accent-1: hsl(219, 80%, 60%);
+  /* color of unread dividers and some indicators */
+  --accent-2: hsl(219, 80%, 52%);
+  /* color of accented buttons */
+  --accent-3: hsl(219, 80%, 44%);
+  /* color of accented buttons when hovered */
+  --accent-4: hsl(219, 80%, 36%);
+  /* color of accented buttons when clicked */
+  --accent-5: hsl(219, 80%, 28%);
+  /* color of mentions and messages that mention you */
+  --background-mentioned: hsla(219, 80%, 52%, 0.08);
+  /* color of mentions and messages that mention you when hovered */
+  --background-mentioned-hover: hsla(219, 80%, 52%, 0.05);
+  --mention-background: var(--primary-900-hsl);
+  --bg-brand: hsl(219, 80%, 52%);
+  --text-brand: hsl(219, 80%, 52%);
+  --text-danger: var(--accent-2);
+  --text-feedback-critical: hsl(219, 100%, 100%);
+  /* Automatically resizing gif picker */
+  --expression-picker-aspect-ratio: 1.125 / 1;
+  --status-danger: hsl(219, 80%, 52%);
 
-    --brand-experiment: hsl(0, 80%, 28%);
-    --status-danger: var(--accent-2);
-
-    /* font family  */
-    --font-primary: var(--font), 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-display: var(--font), 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* font family  */
+  --font-primary: var(--font), "Noto Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-display: var(--font), "Noto Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 /* hide useless things */
 
 /* ▶▶ chat right click menu (user) */
-/* add note */#user-context-note,
+/* add note */
+#user-context-note,
 /* Change Friend Nickname */#user-context-edit-friend-nickname,
 /* Add Friend Nickname */#user-context-add-friend-nickname,
 /* Apps */#user-context-apps,
@@ -106,343 +127,575 @@
 /* ▶▶ user profile ◀◀ */
 /* invite to server */#user-profile-overflow-menu-invite-to-server,
 /* seperator */.separator_c1e9c4 {
-    display: none;
+  display: none;
 }
 
 /* ryo loader  */
-.container_a2f514.fixClipping_efbae7>.content_a2f514 {
-    position: relative;
+.container_a2f514.fixClipping_efbae7 > .content_a2f514 {
+  position: relative;
 }
 
-.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514 {
-    display: none;
+.container_a2f514.fixClipping_efbae7 > .content_a2f514 .ready_a2f514 {
+  display: none;
 }
 
-.container_a2f514.fixClipping_efbae7>.content_a2f514 .ready_a2f514+.text_a2f514 {
-    top: 50px;
+.container_a2f514.fixClipping_efbae7
+  > .content_a2f514
+  .ready_a2f514
+  + .text_a2f514 {
+  top: 50px;
 }
 
-.container_a2f514.fixClipping_efbae7>.content_a2f514::before {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    left: calc(50% - 100px);
-    width: 200px;
-    height: 200px;
-    background: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-loading.gif") center/80% no-repeat !important;
-    image-rendering: pixelated;
+.container_a2f514.fixClipping_efbae7 > .content_a2f514::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  background: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-loading.gif")
+    center/80% no-repeat !important;
+  image-rendering: pixelated;
 }
 
 /* ryo yamada dm button background instead of wumpus */
-.childWrapper__6e9f8>svg:not(.favoriteIcon_c9fddf) {
-    display: none;
+.childWrapper__6e9f8 > svg:not(.favoriteIcon_c9fddf) {
+  display: none;
 }
 
-
 .childWrapper__6e9f8:has(> svg:not(.favoriteIcon_c9fddf)) {
-    background: url('https://cdn.discordapp.com/emojis/1085365741685047306.gif?size=128&quality=lossless');
-    background-color: transparent !important;
-    background-size: cover;
+  background: url("https://cdn.discordapp.com/emojis/1085365741685047306.gif?size=128&quality=lossless");
+  background-color: transparent !important;
+  background-size: cover;
 }
 
 /* hide ❓ */
-a[href="https://support.discord.com"] {
-    display: none;
+a[href="https://support.discord.com"]
+{
+  display: none;
 }
 
 /*i'm new here, say hi!  */
-[class*=newMemberBadge]:before {
-    content: url(https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-hi.gif?size=64&quality=lossless);
-    transform: translate(-100%, -110%);
-    display: inline-block;
-    scale: 0.32;
+[class*="newMemberBadge"]:before {
+  content: url(https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/ryo-hi.gif?size=64&quality=lossless);
+  transform: translate(-100%, -110%);
+  display: inline-block;
+  scale: 0.32;
 }
 
 /* ryo chase  */
 [class^="panels_c48ade"]::before {
-    content: "";
-    width: 100px;
-    height: 50px;
-    left: 210px;
-    margin-top: -50px;
-    position: absolute;
-    background-image: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/NijikaChasesRyo.gif");
-    background-size: contain;
+  content: "";
+  width: 100px;
+  height: 50px;
+  left: 210px;
+  margin-top: -50px;
+  position: absolute;
+  background-image: url("https://raw.githubusercontent.com/Sepultrex/discordCss/refs/heads/main/img/NijikaChasesRyo.gif");
+  background-size: contain;
 }
 
 /* hide folder  */
 div[data-dnd-name="hidefolder"] {
-    display: none !important;
+  display: none !important;
 }
 
 /* damn activites? dont care lol */
-.membersGroup_c8ffbb:has(>.headerContainer__095fe),
+.membersGroup_c8ffbb:has(> .headerContainer__095fe),
 .membersWrap_c8ffbb .openOnHover__0f2e8 {
-    display: none !important;
+  display: none !important;
 }
 
 /* pin menu */
-[class^=searchResultsWrap_] [class^=container_]:has([class^=pageControlContainer_]) {
-    position: sticky;
-    bottom: 0px;
-    z-index: 999;
-    background: var(--bg-overlay-1, var(--background-secondary));
+[class^="searchResultsWrap_"]
+  [class^="container_"]:has([class^="pageControlContainer_"]) {
+  position: sticky;
+  bottom: 0px;
+  z-index: 999;
+  background: var(--bg-overlay-1, var(--background-secondary));
 }
 
 /* no more ads in voice channels  */
 .wrapper_e9b191 {
-    display: none;
+  display: none;
 }
 
 [href="/store"],
 [aria-label*="Share Nitro with Friends"],
 [href="/shop"] {
-    display: none;
+  display: none;
 }
 
 /* image hover  */
 [aria-label*="Edit Image with Apps"] {
-    display: none;
+  display: none;
 }
 
 /* Text Bar  */
-[aria-label*='Open sticker picker'],
-[aria-label*='Send a gift'],
+[aria-label*="Send a gift"],
 .channelAppLauncher_e6e74f {
-    display: none !important;
-}
-
-/* Message shift-hover  */
-[aria-label*="Create Thread"],
-[aria-label*="Mark Unread"],
-[aria-label*="Copy Message ID"] {
-    display: none;
+  display: none !important;
 }
 
 /* edited text  */
 .timestamp_c19a55:not(.timestampInline_c19a55) time::after {
-    content: " (" attr(aria-label) ")";
-    font-size: 0.80em;
+  content: " (" attr(aria-label) ")";
+  font-size: 0.8em;
 }
 
 .edited_c19a55:not(.message-translate-indicator) {
-    display: none;
+  display: none;
 }
 
 /* Discover  */
 .footer__214dc,
 [aria-label*="Discover"] {
-    display: none;
+  display: none;
 }
 
 [class^="userPopoutInner_"] [class^="blockquoteContainer_"] {
-    max-height: 90px;
+  max-height: 90px;
 }
 
 /* Allow the server tooltip to fit the entire server name in one line */
-[class^=tooltip] {
-    max-width: unset !important;
-    /* allow it to be larger */
+[class^="tooltip"] {
+  max-width: unset !important;
+  /* allow it to be larger */
 }
 
 /* bot opaklık*/
 .member_c8ffbb.container__91a9d:has(.botTag__82f07) {
-    opacity: 0.15;
+  opacity: 0.2;
 }
 
 /* OMG İ HATE BADGESSSSSS */
 div[class="container__8061a"] {
+  display: none;
+}
+
+/* KÜÇÜK TEXT BAR*/
+
+.form_f75fb0 {
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  flex-direction: column-reverse;
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--background-primary);
+
+  .typing_b88801 {
+    position: relative;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+
+    .dots__5ad89 {
+      display: none;
+    }
+  }
+
+  .channelBottomBarArea_f75fb0 {
+    .channelAppLauncher_e6e74f {
+      display: none;
+
+      .button_e6e74f {
+        width: 34px;
+        height: 34px;
+
+        .contents__201d5 .lottieIcon__5eb9b {
+          width: 16px !important;
+        }
+      }
+    }
+
+    .channelTextArea_f75fb0 {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 0px;
+      overflow: visible !important;
+      border: none;
+      background: transparent !important;
+
+      .stackedBars__74017 {
+        width: 100%;
+        border-radius: var(--radius-sm);
+
+        .clipContainer__841c8 {
+          border-radius: var(--radius-sm);
+          min-height: 34px;
+        }
+      }
+
+      .scrollableContainer__74017 {
+        background: none;
+        width: calc(100% + 8px);
+        align-items: end;
+        overflow: visible !important;
+        overflow-y: scroll !important;
+        min-height: calc(100% + 4px);
+
+        .inner__74017 {
+          border-radius: var(--radius-sm);
+          padding: 0px;
+          gap: 4px;
+          align-items: flex-end;
+          overflow: visible !important;
+
+          .attachWrapper__0923f {
+            height: 34px;
+            width: 34px;
+            align-self: flex-end;
+
+            .attachButton__0923f {
+              width: 34px;
+              height: 34px;
+              justify-self: end;
+              padding: 0px !important;
+
+              .attachButtonInner__0923f svg {
+                width: 16px !important;
+              }
+
+              &:hover {
+                background-color: var(--gnome-button-hover-background);
+              }
+            }
+          }
+
+          .buttons__74017 {
+            gap: 4px;
+            width: fit-content;
+            height: 34px;
+            margin-right: 4px;
+
+            .expression-picker-chat-input-button,
+            .button__201d5 {
+              height: 34px;
+              width: 34px;
+              border-radius: var(--radius-sm);
+              transition: background 0.2s;
+              margin: 0px;
+
+              .contents__201d5 .lottieIcon__5eb9b,
+              .buttonWrapper__24af7 svg,
+              .spriteContainer__04eed {
+                width: 16px !important;
+                height: 16px !important;
+                --custom-emoji-sprite-size: 16px !important;
+              }
+
+              &:hover {
+                background-color: var(--gnome-button-hover-background);
+              }
+            }
+
+            .separator_aa63ab {
+              display: none;
+            }
+
+            .container_aa63ab > .buttonContainer_aa63ab > .button_aa63ab {
+              border-radius: 50%;
+              background-color: var(--brand-500);
+              transition: opacity 0.2s;
+
+              .contents__201d5 {
+                margin-left: 0px;
+
+                .buttonChild_aa63ab {
+                  color: var(--interactive-normal);
+                }
+              }
+
+              &[disabled] {
+                opacity: 0.5;
+              }
+            }
+          }
+
+          .textArea__74017 {
+            min-height: 34px !important;
+            align-content: end;
+            height: 34px;
+            background-color: var(--background-tertiary);
+            border-radius: var(--radius-sm);
+
+            .placeholder__1b31f {
+              padding: 6px 0px;
+            }
+
+            .editor__1b31f {
+              padding: 6px;
+              min-height: 20px;
+              border-radius: var(--radius-sm);
+              box-sizing: border-box;
+              margin-left: 0px !important;
+
+              > div {
+                min-height: 22px;
+              }
+            }
+          }
+        }
+
+        &::-webkit-scrollbar {
+          width: 0px !important;
+        }
+      }
+
+      .floatingBars__74017 {
+        min-height: 0px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  &:has(.innerDisabled__74017) {
     display: none;
+  }
+
+  .wrapper__44df5 {
+    margin: 0px;
+    background-color: transparent;
+  }
+}
+
+.scrollerSpacer__36d07 {
+  height: 24px;
+}
+
+/* text shift*/
+.button_f7ecac:has(> div),
+.separator_f84418 {
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  opacity: 0;
+  transition: min-width var(--animation-speed) ease-out,
+    width var(--animation-speed) ease-out,
+    height var(--animation-speed) ease-out,
+    padding var(--animation-speed) ease-out,
+    opacity var(--animation-speed) ease-out;
+}
+
+.buttonsInner__5126c:hover > :not(.separator_f84418) {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  padding: 2px;
+  opacity: 1;
+  > div {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    transform: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.buttonsInner__5126c:hover > .separator_f84418 {
+  width: 1px;
+  height: 24px;
+  margin: 2px 4px;
+  opacity: 1;
+}
+
+/* channel list */
+[class="link__2ea32"] {
+  padding-block: 3px;
+}
+
+.wrapper__2ea32:not(.typeThread__2ea32) {
+  margin-left: 1 !important;
+}
+.wrapper__29444 {
+  padding-left: 8px !important;
 }
 
 /* COLOR ✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕✕  */
 
 .vc-uvs-speaker.vc-uvs-clickable {
-    color: var(--accent-1) !important; /* ses simgesi */
-  }
+  color: var(--accent-1) !important; /* ses simgesi */
+}
 
 a {
-    color: var(--accent-0) !important; 
-  }
+  color: var(--accent-0) !important;
+}
 
 /* durumdaki minik oyun müzik ikonu */
 svg.icon_c9d15c path {
-    fill: var(--accent-1) !important;
+  fill: var(--accent-1) !important;
 }
 
 /* butonlar*/
 .iconContainer_c1e9c4 .checkbox_f525d3.checked_f525d3 {
-    background-color: var(--accent-1) !important;
+  background-color: var(--accent-1) !important;
 }
 
 /* replace ping/strikethrough red  */
 .numberBadge__2b1f5,
 /* dm unread number  */
 .mention__3b95d {
-    background: var(--accent-2) !important;
+  background: var(--accent-2) !important;
 }
 
 /* unread dividers  */
 .divider__908e2 {
-    --divider-color: var(--accent-2);
+  --divider-color: var(--accent-2);
 }
 
 /* mute button strikethrough  */
 .icon__07f91 {
-    color: var(--accent-2) !important;
+  color: var(--accent-2) !important;
 }
 
 path[fill="var(--status-danger)"]
 
-/* vencord game activity strikethrough  */
-    {
-    fill: var(--accent-2) !important;
+/* vencord game activity strikethrough  */ {
+  fill: var(--accent-2) !important;
 }
 
 .theme-dark {
-    --blue-345: var(--accent-1);
-    /* links  */
-    --brand-260: var(--accent-2);
-    /* "NEW" channel list indicator  */
-    --brand-360: var(--accent-2);
-    /* bot labels, dm button, spotify progressbar  */
-    --brand-430: var(--accent-4);
-    /* send button hover  */
-    --brand-500: var(--accent-3);
-    /* buttons  */
-    --brand-560: var(--accent-4);
-    /* button hovered  */
-    --brand-600: var(--accent-5);
-    /* button pressed  */
-    --mention-background: var(--mention);
-    --mention-foreground: var(--accent-2);
-    --background-message-highlight: var(--mention);
-    --background-message-highlight-hover: var(--mention-hover);
+  --blue-345: var(--accent-1);
+  /* links  */
+  --brand-260: var(--accent-2);
+  /* "NEW" channel list indicator  */
+  --brand-360: var(--accent-2);
+  /* bot labels, dm button, spotify progressbar  */
+  --brand-430: var(--accent-4);
+  /* send button hover  */
+  --brand-500: var(--accent-3);
+  /* buttons  */
+  --brand-560: var(--accent-4);
+  /* button hovered  */
+  --brand-600: var(--accent-5);
+  /* button pressed  */
+  --mention-background: var(--mention);
+  --mention-foreground: var(--accent-2);
+  --background-message-highlight: var(--mention);
+  --background-message-highlight-hover: var(--mention-hover);
 }
 
 /* mention */
 .wrapper_f61d60 {
-    background: var(--mention);
+  background: var(--mention);
 }
 
 /* settings checkbuttons  */
 .container__87bf1.checked__87bf1 {
-    background: var(--accent-3) !important;
+  background: var(--accent-3) !important;
 }
 
 /* replace ping yellow  */
 .theme-dark {
-    --background-mentioned: var(--mention);
-    --background-mentioned-hover: var(--mention-hover);
+  --background-mentioned: var(--mention);
+  --background-mentioned-hover: var(--mention-hover);
 }
 
 /* mention message left edge  */
 .mentioned__5126c:before {
-    background: var(--accent-3) !important;
+  background: var(--accent-3) !important;
 }
 
 /* replace green  */
 .theme-dark {
-    --green-360: var(--accent-2);
-    /* replace other green stuff  */
-    --green-430: var(--accent-3);
-    /* green buttons (like invite)  */
-    --green-500: var(--accent-4);
-    /* green button hover  */
-    --green-530: var(--accent-5);
-    /* green button click  */
-    --text-positive: var(--accent-1);
+  --green-360: var(--accent-2);
+  /* replace other green stuff  */
+  --green-430: var(--accent-3);
+  /* green buttons (like invite)  */
+  --green-500: var(--accent-4);
+  /* green button hover  */
+  --green-530: var(--accent-5);
+  /* green button click  */
+  --text-positive: var(--accent-1);
 }
 
 /* context menu hover color  */
 .colorDefault_c1e9c4.focused_c1e9c4 {
-    background-color: var(--accent-5);
+  background-color: var(--accent-5);
 }
 
 /* Add danger colours to dangerous user actions  */
 #user-context-close-dm,
 #user-context-remove-friend,
 #user-context-block {
-    color: var(--accent-2);
+  color: var(--accent-2);
 }
 
 #user-context-close-dm:active,
 #user-context-remove-friend:active,
 #user-context-block:active {
-    background-color: var(--accent-5) !important;
-    color: var(--white-500) !important;
+  background-color: var(--accent-5) !important;
+  color: var(--white-500) !important;
 }
 
 #user-context-close-dm[class*="focused_"],
 #user-context-remove-friend[class*="focused_"],
 #user-context-block[class*="focused_"] {
-    background-color: var(--accent-5);
-    color: var(--white-500);
+  background-color: var(--accent-5);
+  color: var(--white-500);
 }
 
 /* microphone not working warning  */
 .notice__6e2b9 {
-    background-color: var(--mention-hover);
+  background-color: var(--mention-hover);
 }
 
 /* automod  */
 .automodMessage__5126c {
-    background-color: var(--accent-2);
+  background-color: var(--accent-2);
 }
 
 .shieldIcon_b7ab2c {
-    color: var(--accent-2);
+  color: var(--accent-2);
 }
 
 /* remove attachment button  */
 .removeMosaicItemHoverButton__6c706:hover {
-    background-color: var(--accent-1);
+  background-color: var(--accent-1);
 }
 
 /* poll  */
 .votePercentageBar__4c520 {
-    background: var(--mention-hover);
+  background: var(--mention-hover);
 }
 
 /* server owner ico  */
 svg[aria-label="Server Owner"] {
-    color: var(--accent-1);
+  color: var(--accent-1);
 }
 
 /*ping */
 .message__5126c.mentioned__5126c {
-    background-color: var(--mention);
+  background-color: var(--mention);
 }
 
 .message__5126c.mentioned__5126c:hover {
-    background-color: var(--mention-hover) !important;
+  background-color: var(--mention-hover) !important;
 }
 
 /* new message bar  */
 .newMessagesBar__0f481::before {
-    background: var(--accent-3);
+  background: var(--accent-3);
 }
 
 /* voice connected  */
 .rtcConnectionStatusConnected__06d62 {
-    color: var(--accent-1) !important;
+  color: var(--accent-1) !important;
 }
 
 /*Bot tag */
 .botTagRegular__82f07 {
-    background-color: var(--accent-5);
+  background-color: var(--accent-5);
 }
 
 /* spotify player*/
 #vc-spotify-player {
-    background-color: #0c0c0e !important;
+  background-color: #0c0c0e !important;
 }
 
 .barFill_a562c8 {
-    background-color: var(--accent-1) !important;
-}
-
-.grabber_a562c8 {
-    margin-top: -5px !important;
-    margin-left: -5px !important;
+  background-color: var(--accent-1) !important;
 }
